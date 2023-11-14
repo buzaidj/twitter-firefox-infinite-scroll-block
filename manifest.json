@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Twitter Scroll Blocker",
+    "version": "1.0",
+    "description": "Block network requests on Twitter after a certain scroll depth.",
+    "permissions": [
+        "webRequest", "webRequestBlocking", "*://twitter.com/*"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://twitter.com/*"],
+            "js": ["blockScroll.js"]
+        }
+    ]
+}
