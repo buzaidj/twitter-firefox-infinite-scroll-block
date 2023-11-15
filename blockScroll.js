@@ -1,4 +1,7 @@
-let maxY = 10000;
+const MAX_Y_DELTA = 30000; // this MUST be about the twitter page size (e.g. like 200 tweets)
+// to not get multiple reloads
+// idk why but thats the way it is
+let maxY = MAX_Y_DELTA;
 
 function checkAndNotifyForBlock() {
     const elements = document.querySelectorAll('[data-testid="cellInnerDiv"]');
@@ -45,7 +48,7 @@ function modifyEndOfFeedMessage() {
             }
     
             retryButtonDiv.addEventListener('click', () => {
-                maxY += 10000; // Increase the maxY value
+                maxY += MAX_Y_DELTA; // Increase the maxY value
                 browser.runtime.sendMessage({ blockRequests: false }); // Enable requests again
             }, { once: true }); // Ensure the event listener is added only once
             // TODO: replace the Retry text that's a child somewhre of retryButtonDiv
